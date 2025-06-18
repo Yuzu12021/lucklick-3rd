@@ -2,7 +2,7 @@
 const fetch = (...args) =>
   import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
-const GAS_WEBHOOK = 'https://script.google.com/macros/s/AKfycby7KP0ZNspaDvMXjlvRJxvSCkihpzqZAKbH_EC5PUI-6lJ_mR8QXTNqTInkswCpZo24Qg/exec';
+const GAS_WEBHOOK = 'https://script.google.com/macros/s/AKfycbwG4MGWwXcizON6APlcq8yOYR7yV9rgO4LsU22UtZx7XT3YQOQth4WIg9r05vuMq3bCTw/exec';
 
 
 const express = require('express');
