@@ -272,8 +272,6 @@ agreeCheckbox.addEventListener('change', () => {
   confirmButton.disabled = !agreeCheckbox.checked;
 });
 
-document.getElementById('downloadExcel').addEventListener('click', () => {
-  window.location.href = '/export-excel';
-});
+
 
 });
