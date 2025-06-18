@@ -81,16 +81,26 @@ app.post('/submit', upload.single('photo'), async (req, res) => {
     };
 
     // 追記 ★★★★★
-try {
-  await fetch(GAS_WEBHOOK, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(entry)
-  });
-  console.log('✅ GAS へ転送完了');
-} catch (err) {
-  console.error('❌ GAS への転送失敗', err);
-}
+    try {
+      await fetch(process.env.SPREADSHEET_WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title,
+          dogName,
+          ownerName,
+          ownerKana,
+          ownerEmail,
+          ownerPhone,
+          ownerPostal,
+          ownerAddress,
+          photo: imageUrl // ← Cloudinaryの画像URL
+        })
+      });
+      console.log('✅ GAS へ転送完了');
+    } catch (err) {
+      console.error('❌ GAS への転送失敗', err);
+    }
 // ★★★★★ ここまで
 
     fs.appendFile('submissions.log', JSON.stringify(entry) + '\n', err => {
@@ -121,30 +131,6 @@ app.get('/submissions', (req, res) => {
     }).filter(Boolean);
 
     res.json(entries);
-  });
-});
-
-// Excel出力
-app.get('/export-excel', (req, res) => {
-  fs.readFile('submissions.log', 'utf-8', (err, data) => {
-    if (err) return res.status(500).send('読み込み失敗');
-
-    const entries = data.trim().split('\n').map(line => {
-      try {
-        return JSON.parse(line);
-      } catch {
-        return null;
-      }
-    }).filter(Boolean);
-
-    const worksheet = XLSX.utils.json_to_sheet(entries);
-    const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, '応募一覧');
-
-    const buffer = XLSX.write(workbook, { type: 'buffer', bookType: 'xlsx' });
-    res.setHeader('Content-Disposition', 'attachment; filename="submissions.xlsx"');
-    res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-    res.send(buffer);
   });
 });
 
