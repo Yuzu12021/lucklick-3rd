@@ -18,7 +18,7 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
-// メモリ上に保存するmulter設定
+// メモリ上に保存するmulter
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
