@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>LuckLickフォトコン応募一覧（スタッフ用）</title>
+  <style>
+    body { font-family: sans-serif; background: #fff8f0; padding: 20px; }
+    .image { margin: 10px; display: inline-block; }
+    img { width: 200px; height: auto; display: block; }
+  </style>
+</head>
+<body>
+  <h1>LuckLickフォトコン応募一覧（スタッフ用）</h1>
+
+  <!-- ログイン画面 -->
+  <div id="loginSection">
+    <label for="password">スタッフ用パスワード：</label>
+    <input type="password" id="password">
+    <button id="loginButton">ログイン</button>
+  </div>
+
+  <!-- 応募一覧表示（最初は非表示） -->
+  <div id="gallerySection" style="display:none;">
+    <div id="gallery"></div>
+    <button id="downloadExcel">Excelダウンロード</button>
+
+  </div>
+
+  <script>
+    const loginButton = document.getElementById('loginButton');
+    const passwordInput = document.getElementById('password');
+
+    loginButton.addEventListener('click', () => {
+      const password = passwordInput.value;
+      if (password === 'lucklick2025') {  // パスワードは任意に設定OK
+        document.getElementById('loginSection').style.display = 'none';
+        document.getElementById('gallerySection').style.display = 'block';
+        loadSubmissions();
+      } else {
+        alert('パスワードが間違っています');
+      }
+    });
+
+    function loadSubmissions() {
+      fetch('/submissions')
+        .then(response => response.json())
+        .then(entries => {
+          const gallery = document.getElementById('gallery');
+          if (Array.isArray(entries)) {
+            entries.forEach(entry => {
+              const div = document.createElement('div');
+              div.className = 'image';
+              const img = document.createElement('img');
+              img.src = 'uploads/' + entry.photo;
+              div.appendChild(img);
+              const caption = document.createElement('p');
+              caption.innerHTML = `
+  <strong>${entry.dogName || '(名前なし)'}</strong><br>
+  年齢: ${entry.dogAge || '-'}<br>
+  タイトル: ${entry.title || '-'}<br>
+  飼い主: ${entry.ownerName || '-'}<br>
+  住所: ${entry.ownerPostal || ''} ${entry.ownerAddress || ''}<br>
+  TEL: ${entry.ownerPhone || '-'}<br>
+  Email: ${entry.ownerEmail || '-'}<br>
+  <small>${entry.photo}</small>
+`;
+
+              div.appendChild(caption);
+              gallery.appendChild(div);
+            });
+          } else {
+            alert('応募情報の取得に失敗しました。');
+          }
+        })
+        .catch(() => alert('応募情報の取得エラー'));
+    }
+    
+    document.getElementById('downloadExcel').addEventListener('click', () => {
+      window.location.href = '/export-excel';
+    });
+  </script>
+</body>
+</html>
