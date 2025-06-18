@@ -1,3 +1,10 @@
+// 既存の require 群の下あたりに追加
+const fetch = (...args) =>
+  import('node-fetch').then(({ default: fetch }) => fetch(...args));
+
+const GAS_WEBHOOK = 'https://script.google.com/macros/s/AKfycbyA8olG_-_faE-q603QXpfHX-4lprGtj6IhqqdT6A5zl1N1hkHpMAPRbn6xmnWq_jo47Q/exec';
+
+
 const express = require('express');
 const multer = require('multer');
 const streamifier = require('streamifier');
@@ -78,6 +85,19 @@ app.post('/submit', upload.single('photo'), async (req, res) => {
       photo: imageUrl,
       timestamp: new Date().toISOString()
     };
+
+    // 追記 ★★★★★
+try {
+  await fetch(GAS_WEBHOOK, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(entry)
+  });
+  console.log('✅ GAS へ転送完了');
+} catch (err) {
+  console.error('❌ GAS への転送失敗', err);
+}
+// ★★★★★ ここまで
 
     fs.appendFile('submissions.log', JSON.stringify(entry) + '\n', err => {
       if (err) console.error('保存失敗:', err);
