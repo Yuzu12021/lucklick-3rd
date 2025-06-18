@@ -53,7 +53,11 @@
               const div = document.createElement('div');
               div.className = 'image';
               const img = document.createElement('img');
-              img.src = 'uploads/' + entry.photo;
+              img.src = entry.photo && entry.photo.startsWith('http')
+              ? entry.photo.trim()
+              : 'uploads/' + entry.photo;
+              img.alt = entry.title || '応募画像';
+              img.style.maxWidth = '200px';
               div.appendChild(img);
               const caption = document.createElement('p');
               caption.innerHTML = `
