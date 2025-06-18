@@ -31,7 +31,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// 応募フォーム POST処理
+// 応募フォーム POST
 app.post('/submit', upload.single('photo'), async (req, res) => {
   try {
     const {
