@@ -1,10 +1,4 @@
-// 既存の require 群の下あたりに追加
-const fetch = (...args) =>
-  import('node-fetch').then(({ default: fetch }) => fetch(...args));
-
-const GAS_WEBHOOK = 'https://script.google.com/macros/s/AKfycbwG4MGWwXcizON6APlcq8yOYR7yV9rgO4LsU22UtZx7XT3YQOQth4WIg9r05vuMq3bCTw/exec';
-
-
+const GAS_WEBHOOK = process.env.GAS_WEBHOOK;
 const express = require('express');
 const multer = require('multer');
 const streamifier = require('streamifier');
