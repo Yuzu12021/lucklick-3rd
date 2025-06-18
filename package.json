@@ -1,14 +1,12 @@
 {
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
-<<<<<<< HEAD
-    "express": "^5.1.0",
-    "multer": "^2.0.1",
-=======
     "cloudinary": "^2.7.0",
     "express": "^5.1.0",
     "multer": "^2.0.1",
     "streamifier": "^0.1.1",
->>>>>>> 5a8cbf7 (最初のコミット：Cloudinary対応済み)
     "xlsx": "^0.18.5"
   }
 }
