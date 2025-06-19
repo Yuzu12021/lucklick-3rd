@@ -1,4 +1,4 @@
-const GAS_WEBHOOK = process.env.GAS_WEBHOOK;
+const webhookUrl = process.env.SPREADSHEET_WEBHOOK_URL;
 const express = require('express');
 const multer = require('multer');
 const streamifier = require('streamifier');
@@ -80,6 +80,11 @@ app.post('/submit', upload.single('photo'), async (req, res) => {
       timestamp: new Date().toISOString()
     };
 
+    console.log('--- デバッグ ---');
+    console.log('Webhook URL 👉', process.env.SPREADSHEET_WEBHOOK_URL);
+    console.log('送信データ 👉', entry);
+    console.log('---------------');
+    
     // 追記 ★★★★★
     try {
       await fetch(process.env.SPREADSHEET_WEBHOOK_URL, {
