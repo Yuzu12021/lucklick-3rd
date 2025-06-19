@@ -87,16 +87,17 @@ app.post('/submit', upload.single('photo'), async (req, res) => {
 
     // 追記 ★★★★★
     try {
-      await fetch(process.env.SPREADSHEET_WEBHOOK_URL, {
-        method: 'POST',
-        aders: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: 'Hello from Render!' })
-      });
+  await fetch(process.env.SPREADSHEET_WEBHOOK_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(entry)
+  });
 
-      console.log('✅ GAS へ転送完了');
-    } catch (err) {
-      console.error('❌ GAS への転送失敗', err);
-    }
+  console.log('✅ GAS へ転送完了');
+} catch (err) {
+  console.error('❌ GAS への転送失敗', err);
+}
+
 // ★★★★★ ここまで
 
     fs.appendFile('submissions.log', JSON.stringify(entry) + '\n', err => {
