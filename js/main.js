@@ -76,33 +76,35 @@ photoInput.addEventListener('change', () => {
     reader.onload = () => {
       const img = new Image();
       img.onload = () => {
-        console.log("🖼️ 画像読み込み完了");
-        preview.src = reader.result; // 元の画像をそのまま使用
-        preview.classList.remove('hidden');
-        cropperWrapper.classList.remove('hidden');
+  console.log("🖼️ 画像読み込み完了");
+  preview.src = reader.result; // ✅ この行だけでOK
 
-        console.log("📐 Cropper初期化中...");
-        if (cropper) cropper.destroy();
-        cropper = new Cropper(preview, {
-          aspectRatio: 3 / 2,
-          viewMode: 1,
-          autoCropArea: 1,
-          dragMode: 'move',
-          zoomable: true,
-          scalable: false,
-          cropBoxMovable: false,
-          cropBoxResizable: false,
-          background: false,
-          guides: false,
-          responsive: true
-        });
+  preview.classList.remove('hidden');
+  cropperWrapper.classList.remove('hidden');
 
-        setTimeout(() => {
-          cropper.zoomTo(1);
-          zoomSlider.value = 1;
-          console.log("✅ Cropper準備完了");
-        }, 100);
-      };
+  console.log("📐 Cropper初期化中...");
+  if (cropper) cropper.destroy();
+  cropper = new Cropper(preview, {
+    aspectRatio: 3 / 2,
+    viewMode: 1,
+    autoCropArea: 1,
+    dragMode: 'move',
+    zoomable: true,
+    scalable: false,
+    cropBoxMovable: false,
+    cropBoxResizable: false,
+    background: false,
+    guides: false,
+    responsive: true
+  });
+
+  setTimeout(() => {
+    cropper.zoomTo(1);
+    zoomSlider.value = 1;
+    console.log("✅ Cropper準備完了");
+  }, 100);
+};
+
       img.src = reader.result;
     };
     reader.readAsDataURL(file);
