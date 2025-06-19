@@ -132,6 +132,6 @@ app.get('/submissions', (req, res) => {
 });
 
 // サーバー起動
-app.listen(PORT, '0.0.0.0', () => {
+app.listen(PORT,() => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
