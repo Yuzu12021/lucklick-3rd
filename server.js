@@ -84,24 +84,15 @@ app.post('/submit', upload.single('photo'), async (req, res) => {
     console.log('Webhook URL 👉', process.env.SPREADSHEET_WEBHOOK_URL);
     console.log('送信データ 👉', entry);
     console.log('---------------');
-    
+
     // 追記 ★★★★★
     try {
       await fetch(process.env.SPREADSHEET_WEBHOOK_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          title,
-          dogName,
-          ownerName,
-          ownerKana,
-          ownerEmail,
-          ownerPhone,
-          ownerPostal,
-          ownerAddress,
-          photo: imageUrl // ← Cloudinaryの画像URL
-        })
+        aders: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: 'Hello from Render!' })
       });
+
       console.log('✅ GAS へ転送完了');
     } catch (err) {
       console.error('❌ GAS への転送失敗', err);
