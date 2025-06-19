@@ -78,8 +78,6 @@ photoInput.addEventListener('change', () => {
       img.onload = () => {
         console.log("🖼️ 画像読み込み完了");
         preview.src = reader.result; // 元の画像をそのまま使用
-
-        preview.src = canvas.toDataURL('image/jpeg');
         preview.classList.remove('hidden');
         cropperWrapper.classList.remove('hidden');
 
