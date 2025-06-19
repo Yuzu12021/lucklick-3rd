@@ -77,13 +77,7 @@ photoInput.addEventListener('change', () => {
       const img = new Image();
       img.onload = () => {
         console.log("🖼️ 画像読み込み完了");
-        const MAX_WIDTH = 600;
-        const scale = MAX_WIDTH / img.width;
-        const canvas = document.createElement('canvas');
-        canvas.width = MAX_WIDTH;
-        canvas.height = img.height * scale;
-        const ctx = canvas.getContext('2d');
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        preview.src = reader.result; // 元の画像をそのまま使用
 
         preview.src = canvas.toDataURL('image/jpeg');
         preview.classList.remove('hidden');
