@@ -25,29 +25,47 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // スライドインアニメーション
-  const observer = new IntersectionObserver(entries => {
+  // ✅ スライドイン用Observer
+  const slideInObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('active');
+        slideInObserver.unobserve(entry.target);
       }
     });
   }, { threshold: 0.1 });
 
-  document.querySelectorAll('.box2-left, .box2-right').forEach(el => observer.observe(el));
+  document.querySelectorAll('.box2-left, .box2-right').forEach(el => slideInObserver.observe(el));
 
-  // アンダーラインアニメーション
-  document.querySelectorAll('.underline-animate').forEach(heading => {
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animated');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    observer.observe(heading);
+   // ✅ アンダーライン用Observer
+  const underlineObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animated');
+        underlineObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.underline-animate, .underline-bg').forEach(heading => underlineObserver.observe(heading));
+
+  // ✅ スライドショー
+  document.querySelectorAll('.slideshow-container').forEach(container => {
+    const slides = container.querySelectorAll('.slideshow-slide');
+    if (slides.length <= 1) return;
+
+    let current = 0;
+
+    function showNextSlide() {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }
+
+    setInterval(showNextSlide, 4000);
   });
+});
+
 
   // --------------------------
 // フォーム処理ここから
@@ -264,8 +282,4 @@ const agreeCheckbox = document.getElementById('agreeCheckbox');
 
 agreeCheckbox.addEventListener('change', () => {
   confirmButton.disabled = !agreeCheckbox.checked;
-});
-
-
-
 });

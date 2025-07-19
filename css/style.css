@@ -316,21 +316,18 @@ footer {
   font-family: "Mochiy Pop One", sans-serif;
   font-weight: 100;
 }
-
-.underline-animate {
+.underline-bg {
   display: inline;
-  background: linear-gradient(#ffcc6f 0%, #ffcc6f 100%);
+  background-image: linear-gradient(#ffcc6f, #ffcc6f);
   background-repeat: no-repeat;
-  background-size: 0% 0.5em;
+  background-size: 0% 0.4em;
   background-position: 0 100%;
-  transition: background-size 1s ease-out;
-  color: #2e2e2e;
+  transition: background-size 0.8s ease-out;
 }
 
-.underline-animate.animated {
-  background-size: 100% 0.5em;
+.underline-bg.animated {
+  background-size: 100% 0.4em;
 }
-
 
 .box p {
   color: #333;
@@ -481,10 +478,10 @@ footer {
 .btn .text2 {
   text-align: left;
 }
-
-main{
-  margin-top: -2em;
+main {
+  margin-top: 80px;  /* ヘッダー分下にずらす */
 }
+
 .content-top {
   height: 40vh;
   position: relative;
@@ -502,6 +499,7 @@ main{
   letter-spacing: 0.05em;
   margin: 0;  /* 不要な余白をリセット */
 }
+
 .section{
   background-color: #fff;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -532,8 +530,22 @@ main{
   padding-top: 2em;
   padding-bottom: 2em;
 }
+
+.slider-img {
+  width: 30%;
+  height: auto;
+  object-fit: cover;
+}
+
 .slider .text{
   font-size: 3.8vw;
+}
+.summer h1{
+  text-align: center;
+  font-family: "Mochiy Pop One", sans-serif;
+  margin-top: -1em;
+  font-size: 1.2em;
+  margin-bottom: 2em;
 }
 .slide-track {
   display: flex;
@@ -752,4 +764,396 @@ hr{
   margin: 0;
   white-space: nowrap;
   pointer-events: none; /* テキストがクリックを邪魔しないように */
+}
+.summer-slider{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  margin-top: 10px;
+  box-sizing: border-box;
+}
+.summer-slider-img{
+  width: 30%;
+  height: auto;
+  object-fit: cover;
+}
+.summer-slide {
+  text-align: center;
+  margin-top: 2em;
+}
+.summer-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  margin-bottom: 1em;
+}
+.summer-slider {
+  position: relative;
+  overflow: hidden;
+}
+.summer-panel {
+  display: none;
+  transition: transform 0.5s ease;
+}
+.summer-panel.active {
+  display: block;
+}
+.summer-panel img {
+  width: 80%;
+  max-width: 300px;
+  margin-bottom: 1em;
+}
+.summer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 0.5em;
+  flex-wrap: nowrap;
+  margin: 2em auto;
+  margin-bottom: 0;
+  width: 95%;
+}
+
+.summer-btn {
+  position: relative;
+  display: block;
+  width: 120px;
+  height: 120px;
+  background-size: cover;
+  background-position: center;
+  text-decoration: none;
+  overflow: hidden;
+  transition: transform 0.3s;
+  border: none;
+  font-family: "Mochiy Pop One", sans-serif;
+  cursor: pointer;
+}
+
+.summer-btn:hover {
+  transform: scale(1.05);
+}
+
+.summer-btn span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  font-family: "Mochiy Pop One", sans-serif;
+  font-size: 1em;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.summer-title-img {
+  width: 40%;
+  max-width: 500px;
+  display: block;
+  margin: -3em auto 2em auto;
+}
+.summer-top{
+  width: 100%;
+  margin-top: 7em;
+  mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+}
+.content-top h2{
+  color: #fff !important;
+  position: absolute;
+  bottom: -0.5em;
+  left: 1em;
+  font-size: 1.3em;
+  font-family: "Mochiy Pop One", sans-serif;
+}
+.taberu{
+  color: #de9f00;
+}
+.toru{
+  color: #006fb9;
+  font-size: 0.9em !important;
+}
+.asobu{
+  color: #ff8cb2;
+}
+.summer-bottom{
+  top: -3em;
+  width: 100%;
+}
+.summer-section-top{
+  margin-bottom: 0;
+}
+.summer-section{
+  margin-top: 3em;
+  padding-top: 1em;
+  padding-bottom: 2em;
+  position: relative;
+  overflow: visible;
+  height: auto;
+}
+.summer-section h2{
+  font-family: "Spicy Rice", serif;
+  font-size: 3em;
+  letter-spacing: 0.05em;
+  margin-bottom: 0;
+}
+.summer-section p{
+  margin-top: 0;
+  font-family: "Mochiy Pop One", sans-serif;
+  font-size: 1.3em;
+  font-style: italic;
+}
+.slideshow{
+  width: 80%;
+}
+.summer-section h3{
+  margin: 1em auto;
+  margin-bottom: 0;
+  width: 80%;
+  font-size: 0.9em;
+  text-align: left;
+}
+.attention{
+  text-align: left;
+  margin: 1em auto !important;
+  width: 80%;
+  font-size: 0.8em !important;
+  font-style: normal !important;
+  color: #555;
+  padding-bottom: 1em;
+}
+.underline-animate {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.underline-animate::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 0.4em;
+  transition: width 0.8s ease-out;
+  z-index: -1;
+}
+
+.underline-animate.animated::after {
+  width: 100%;
+}
+
+.underline-taberu::after {
+  background-color: #ffb70061;
+}
+.taberu {
+  color: #916800;
+}
+.underline-toru::after {
+  background-color: #0099ff68;
+}
+.toru{
+  color: #003b63;
+}
+.underline-asobu::after {
+  background-color: #ff8cb26b;
+}
+.asobu{
+  color: #e46d7f;
+}
+.summer-info{
+  font-family: "Mochiy Pop One", sans-serif;
+}
+.summer06{
+  position: absolute;
+  right: 1em; 
+  bottom: -1em;
+  width: 4em;   
+  max-width: none;
+  pointer-events: none;
+}
+.summer08{
+  bottom: 0.5em;
+  width: 8em;
+}
+.summer07{
+  position: absolute;
+  left: 1em;
+  top: -1em;
+  width: 4.5em;
+  max-width: none;
+  pointer-events: none;
+}
+
+.slideshow-container {
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  overflow: hidden;
+  min-height: 30vh;  /* 画像が出ないときでも高さを確保 */
+}
+
+.slideshow-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  object-fit: cover;
+}
+
+.slideshow-slide.active,
+.slideshow-slide:first-child {
+  opacity: 1;
+}
+.summer-menu{
+  background-image: url('../img/menu-bg.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  padding-bottom: 1em;
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 2em;
+}
+.summer-menu-title{
+  width: 35%;
+  margin-top: 2em;
+  padding: 0 2em;
+  border-bottom: solid #003b63 2px;
+}
+.summer-text{
+  width: 60% !important;
+  margin: 0;
+  border-bottom: none;
+}
+.dog-menu{
+  width: 60%;
+  padding-bottom: 1em;
+}
+.cost{
+  width: 90%;
+  margin: 1.5em auto;
+  font-size: 18px;
+}
+.cost h2{
+  font-size: 1em;
+  font-family: "Mochiy Pop One", sans-serif;
+}
+.cost p{
+  font-size: 0.8em;
+  margin-top: 0.5em;
+}
+.cost table{
+  width: 50%;
+  margin: 1em auto;
+  text-align: left;
+  font-family: "Mochiy Pop One", sans-serif;
+}
+.cost tr{
+  height: 1.3em;
+}
+.cost ul{
+  font-family: "Mochiy Pop One", sans-serif;
+  text-align: left;
+  font-size: 0.7em;
+  padding-inline-start: 0;
+  margin:0 auto;
+  margin-bottom: 2em;
+  width: 90%;
+}
+.cost img{
+  width: 90%;
+}
+.fish{
+  width: 45% !important;
+  text-align: center !important;
+}
+.line{
+  width: 90%;
+  margin: 3em 0;
+}
+.top_img{
+  width: 100%;
+  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+.ivent-section-top div{
+  padding-bottom: 3em;
+}
+.ivent-section{
+  color: #6f4311;
+}
+.seminar-section{
+  color: #2e2e2e;
+}
+.ivent-section h3{
+  font-size: 0.85em !important;
+  padding-bottom: 2em;
+}
+.ivent-section table{
+  width: 80% !important;
+}
+.ivent-section a{
+  color: #4f2b09;
+}
+/* セミナー用のナビだけに適用するグリッドレイアウト */
+.seminar-nav {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1em;
+  justify-items: center;
+}
+
+/* ボタンサイズ調整（共通クラスのままOKなら以下） */
+.seminar-nav .summer-btn {
+  width: 80%;
+  height: auto !important;
+  max-width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  text-decoration: none;
+  font-family: "Mochiy Pop One", sans-serif;
+  text-align: center;
+  padding: 1em;
+  transition: transform 0.3s;
+  color: #2e2e2e;
+  text-shadow:
+    0 0 4px #fff,
+    0 0 8px #fff,
+    0 0 12px #fff;
+}
+
+.seminar-nav .summer-btn:hover {
+  transform: scale(1.05);
+}
+
+
+@media (max-width: 600px) {
+  h2.underline-asobu {
+    font-size: 2.5em;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .content-top{
+    margin-bottom: 20em;
+  }
+  .content-top h2{
+    font-size: 2em;
+    bottom: -5em;
+    left: 2em;
+  }
+  .slideshow-container{
+    min-height: 25em;
+  }
+  .cost ul{
+    width: 60%;
+  }
 }
