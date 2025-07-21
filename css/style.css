@@ -1174,6 +1174,9 @@ hr{
 .Reserved-time span{
   font-style: normal;
 }
+.anatomy{
+  font-size: 1em !important;
+}
 @media (max-width: 600px) {
   h2.underline-asobu {
     font-size: 2.5em;
