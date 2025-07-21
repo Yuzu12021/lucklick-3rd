@@ -948,6 +948,24 @@ hr{
 .underline-taberu::after {
   background-color: #ffb70061;
 }
+.underline-semi01::after{
+  background-color: rgb(181, 239, 252,0.7);
+}
+.underline-semi02::after{
+  background-color: rgb(102, 227, 146,0.7);
+}
+.underline-semi03::after{
+  background-color: rgb(192, 236, 125,0.7);
+}
+.underline-semi04::after{
+  background-color: rgb(253, 194, 139,0.7);
+}
+.underline-semi05::after{
+  background-color: rgb(253, 160, 160,0.7);
+}
+.underline-semi06::after{
+  background-color: rgb(218, 196, 253,0.7);
+}
 .underline-well01::after{
   background-color: rgba(198, 60, 115, 0.7);
 }
