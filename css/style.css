@@ -1167,7 +1167,13 @@ hr{
   min-width: 140px;
 }
 
-
+.Reserved-time{
+  font-size: 0.7em !important;
+  color: #ce4040 !important;
+}
+.Reserved-time span{
+  font-style: normal;
+}
 @media (max-width: 600px) {
   h2.underline-asobu {
     font-size: 2.5em;
