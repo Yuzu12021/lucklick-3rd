@@ -1,5 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
+
   // ハンバーガーメニュー開閉
   const menuButton = document.getElementById('menuButton');
   const navMenu = document.getElementById('navMenu');
@@ -65,6 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(showNextSlide, 4000);
   });
 });
+
 
 
   // --------------------------
