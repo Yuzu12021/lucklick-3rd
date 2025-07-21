@@ -1133,6 +1133,35 @@ hr{
 .seminar-nav .summer-btn:hover {
   transform: scale(1.05);
 }
+.wellness-nav{
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5em;
+}
+
+/* セミナーナビ共通：段揃え */
+.summer-nav .seminar-row {
+  flex-wrap: nowrap;
+  display: flex !important;
+  justify-content: center;
+  gap: 0.5em;
+  width: 100%;
+  max-width: 720px; /* 親グリッド内で中央化しやすい幅 */
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.seminar-row a{
+  width: 70% !important;
+  max-width: 30vw !important;
+  padding: 0.5em !important;
+}
+/* 2段目：中央揃えかつボタン幅広め */
+.summer-nav .row-2 .btn-wide {
+  flex: 1 1 40%;
+  max-width: 180px;
+  min-width: 140px;
+}
 
 
 @media (max-width: 600px) {
