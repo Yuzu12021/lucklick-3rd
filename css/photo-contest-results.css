@@ -102,7 +102,7 @@
 
 /* Card */
 .pcr-card {
-  background: var(--pcr-bg);
+  background: #fff;
   border: var(--pcr-border);
   border-radius: var(--pcr-radius);
   box-shadow: var(--pcr-shadow);
