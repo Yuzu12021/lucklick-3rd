@@ -44,6 +44,7 @@
   max-width: var(--pcr-max-width);
   margin-inline: auto;
   padding: 2rem 1rem;
+  font-family: "Mochiy Pop One", sans-serif;
 }
 
 .pcr-header {
