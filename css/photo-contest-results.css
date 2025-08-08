@@ -37,7 +37,7 @@
     margin: 1.5em;
 }
 #photo-contest-results {
-  color: var(--pcr-text);
+  color: #111;
   background: transparent;
 }
 
@@ -156,6 +156,7 @@
 .pcr-work-title {
   font-weight: 700;
   line-height: 1.3;
+  color: #111;
 }
 
 .pcr-author {
