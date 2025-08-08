@@ -166,7 +166,7 @@
 }
 
 .pcr-author {
-  color: var(--pcr-muted);
+  color: #666;
   font-size: .9rem;
 }
 
