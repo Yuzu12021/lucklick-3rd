@@ -1,0 +1,209 @@
+/* ===== Photo Contest Results ===== */
+:root {
+  --pcr-max-width: 1200px;
+  --pcr-gap: 1rem;
+  --pcr-radius: 16px;
+  --pcr-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  --pcr-shadow-hover: 0 10px 28px rgba(0,0,0,0.12);
+  --pcr-border: 1px solid rgba(0,0,0,0.08);
+  --pcr-bg: #ffffff;
+  --pcr-muted: #666;
+  --pcr-text: #111;
+  --pcr-accent: #ff9a28; /* バッジ色（お好みで） */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --pcr-bg: #161616;
+    --pcr-text: #f2f2f2;
+    --pcr-muted: #aaa;
+    --pcr-border: 1px solid rgba(255,255,255,0.12);
+    --pcr-shadow: 0 6px 20px rgba(0,0,0,0.5);
+    --pcr-shadow-hover: 0 12px 30px rgba(0,0,0,0.65);
+  }
+}
+.results-comment{
+    background-color: #fff;
+    width: 85%;
+    margin: 2em auto;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    padding: 1em 0;
+    text-align: center;
+}
+.results-comment p{
+    text-align: left;
+    margin: 1.5em;
+}
+#photo-contest-results {
+  color: var(--pcr-text);
+  background: transparent;
+}
+
+.pcr-container {
+  max-width: var(--pcr-max-width);
+  margin-inline: auto;
+  padding: 2rem 1rem;
+}
+
+.pcr-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.pcr-title {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  line-height: 1.2;
+  margin: 0 0 .25rem;
+}
+
+.pcr-subtitle {
+  color: var(--pcr-muted);
+  margin: 0;
+}
+
+.pcr-block {
+  margin-top: 2rem;
+}
+
+.pcr-block-title {
+  font-size: 1.125rem;
+  margin: 0 0 .75rem;
+}
+
+/* Grid */
+.pcr-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--pcr-gap);
+}
+
+@media (min-width: 640px) {
+  .pcr-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 960px) {
+  .pcr-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+/* 特別賞は見栄えを大きく */
+.pcr-grid--special {
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) {
+  .pcr-grid--special {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Card */
+.pcr-card {
+  background: var(--pcr-bg);
+  border: var(--pcr-border);
+  border-radius: var(--pcr-radius);
+  box-shadow: var(--pcr-shadow);
+  overflow: clip;
+  transition: transform .2s ease, box-shadow .2s ease, translate .2s ease;
+  position: relative;
+}
+
+.pcr-card:focus-within,
+.pcr-card:hover {
+  box-shadow: var(--pcr-shadow-hover);
+  translate: 0 -2px;
+}
+
+.pcr-card--highlight {
+  outline: 2px solid color-mix(in oklab, var(--pcr-accent) 60%, transparent);
+}
+
+/* Figure / Image */
+.pcr-figure {
+  display: grid;
+  grid-template-rows: auto minmax(3rem, auto);
+}
+
+.pcr-figure img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;        /* サムネ比率（必要に応じて変更） */
+  object-fit: cover;
+  display: block;
+}
+
+/* Caption */
+.pcr-caption {
+  display: grid;
+  gap: .25rem;
+  padding: .75rem .9rem 1rem;
+}
+
+.pcr-badge {
+  display: inline-block;
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+  padding: .25rem .5rem;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--pcr-accent) 90%, transparent);
+  color: #fff;
+}
+
+.pcr-work-title {
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.pcr-author {
+  color: var(--pcr-muted);
+  font-size: .9rem;
+}
+
+/* データ属性で順位角ラベル（任意） */
+.pcr-card[data-rank]::after {
+  content: attr(data-rank);
+  position: absolute;
+  top: .5rem;
+  left: .5rem;
+  font-weight: 700;
+  font-size: .8rem;
+  line-height: 1;
+  padding: .35rem .5rem;
+  border-radius: .5rem;
+  background: rgba(0,0,0,.65);
+  color: #fff;
+}
+
+/* アクセシビリティ/操作性 */
+.pcr-card a,
+.pcr-card button {
+  outline-offset: 4px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .pcr-card {
+    transition: none;
+  }
+}
+
+/* 余白の最適化 */
+.pcr-block + .pcr-block {
+  margin-top: 2.5rem;
+}
+/* 特別賞 見出し画像 */
+.pcr-block > img {
+  display: block;             /* インライン要素の隙間をなくす */
+  max-width: 300px;           /* 最大幅（必要に応じて変更） */
+  width: 100%;                /* スマホでは自動縮小 */
+  height: auto;               /* アスペクト比維持 */
+  margin: 0 auto 1rem;        /* 中央寄せ＋下に余白 */
+}
+
+/* 大きめ画面では少し広げる */
+@media (min-width: 768px) {
+  .pcr-block > img {
+    max-width: 400px;
+    margin-bottom: 1.5rem;
+  }
+}
